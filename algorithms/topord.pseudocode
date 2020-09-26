@@ -1,0 +1,4 @@
+set indegree(k) = 0 for each k in N
+increment indegree(j) for each arc (i,j) in A
+
+
