@@ -1,0 +1,28 @@
+// - comment
+//
+// pseudocode comes from Network Flows,
+// 	by Ravindra K. Ahuja et al
+// 
+
+// algorithm search
+
+unmark all nodes in N;
+mark node s; // source node
+pred(s) = 0; // predecessor
+next = 1;
+order(s) = s;
+LIST = {s} // add source node to list
+
+while LIST not empty {
+	select a node i in LIST;
+
+	if(node i is incident to an admissiable arc (i,j)) {
+		mark node j;
+		pred(j) = i;
+		next = next + 1;
+		order(j) = next;
+		add node j to LIST;
+	} else {
+		delete node i from LIST;
+	}
+}
