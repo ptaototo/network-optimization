@@ -1,10 +1,22 @@
 // - comment
 //
 // pseudocode comes from Network Flows,
-// 	by Ravindra K. Ahuja et al
+// 	by Ahuja, Magnanti, Orlin (AMO)
 // 
-
+//
 // algorithm search
+
+/* - multi-line comment
+ * Description: "A search algorithm fans out from the source.
+ * 		The search algorithms designates all nodes in the network as
+ *		being in one of the two states: marked or unmarked.
+ *		Marked nodes are known to be reachable from the source while unmarked
+ *		nodes have yet to be determined. If node i is marked and node j is unmarked, 
+ *		and the network contains the arc (i, j), we can mark node j; it is reachable from
+ *		source via a directed path to node i plus arc (i, j).
+ *		We refer to arc (i,j) as admissible if node i is marked and node j unmarked, and
+ *		refer to it as unmarked otherwise." - AMO pg. 74
+ */
 
 unmark all nodes in N;
 mark node s; // source node

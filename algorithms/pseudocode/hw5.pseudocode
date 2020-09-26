@@ -1,0 +1,50 @@
+// - comment
+//  Pseudocode !!
+//  September 24, 2020
+// 	Network Optimization
+//
+// Description: Construct a pseudocode that returns one directed path from source node s
+// 		to destination node t, if one exists. 
+// 		Assess the time complexity of your algorithm
+//
+
+// I was going to use a modified version of the code provided in the textbook,
+// but I think a recursive solution would be more elegant. Though, I make no 
+// guarantees that my recursive solution works.
+
+/* O(1) */
+source_node = node(s);
+dest_node = node(t);
+
+/*
+ * Worst-case scenario is when the directed paths from a source node s
+ * resembles arrays, of which, traversing each one before finding that
+ * there is no path to a node t.
+ * 
+ * What contributes to the worst case are the number of arcs emanating from s
+ * and the depth of the paths. I think what bounds us is linear, as in, we would
+ * not be searching any more than there are nodes in the tree.
+ *
+ * Possible big O could be O(n). Or, for good measure, O(n*log(n)),
+ * It could also be possible that I am being overly optimistic.
+ */
+find_path(source_node);
+
+find_path(current_node) {
+	
+	if (current_node == dest_node) {
+		return current_node;
+	}
+
+	// The cases would be pretty simple for a binary search tree,
+	// in which case, we would have at most two children nodes. 
+	// But as a directed graph, our equivalent of "children" nodes
+	// would be some (node j) where current_node is incident to the arc (i,j).
+	// There may be none, there may be 1, 2, 3, and so on.
+
+	if (current_node is incident to an admissible arc (i,j)) {
+		find_path(node j);
+	} else {
+		return NULL;
+	}
+}
