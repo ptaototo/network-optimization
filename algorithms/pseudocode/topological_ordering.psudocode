@@ -1,4 +1,38 @@
-set indegree(k) = 0 for each k in N
-increment indegree(j) for each arc (i,j) in A
+// - comment
+// Pseudocode from Network Flows, AMO
+// 
 
+algorithm topological order;
+begin
+	for all i in N {
+		indegree(i) = 0;
+	}
 
+	for all (i,j) in A {
+		indegree(j) = indegree(j) + 1
+	}
+
+	LIST = NULL;
+	next = 0
+	for all i in N {
+		if (indegree(i) == 0) {
+			LIST.append(i)
+		}
+	}
+
+	while LIST != NULL {
+		select a node i from LIST and delete it;
+		next = next + 1;
+		for all (i,j) in A(i) {
+			indegree(j) = indegree(j) - 1;
+			if (indegree(j) == 0) {
+				LIST.append(j)
+			}
+		}
+	}
+	if (next < n) {
+		the network contains a directed cycle (i.e. no topological ordering)
+	} else {
+		the network is acyclic and the array order gives a topological order of nodes;
+	}
+end
