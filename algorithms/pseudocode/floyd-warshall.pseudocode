@@ -1,0 +1,26 @@
+// From Network Flows
+// Floyd-Warshall obtains a matrix of shortest path distances 
+// with O(n^3) time complexity.
+
+for all node pairs [i,j] in (N x N) {
+	d[i,j] = INFINITY
+	pred[i,j] = 0
+}
+
+for all nodes i in N {
+	d[i,j] = 0
+}
+
+for each arc(i,j) in A {
+	d[i,j] = c_ij
+	pred[i,j] = i
+}
+
+for k=1 to n {
+	for all (i,j) in (N x N) {
+		if d[i,j] > d[i,k] + d[k,j] {
+			d[i,j] = d[i,k] + d[k,j]
+			pred[i,j] = pred[k,j]
+		}
+	}
+}
